@@ -2,26 +2,26 @@ package com.company;
 
 public class TwoSum {
 
-    //TODO: twoSum header ok?
-    //TODO: user input array?
+    // TODO: twoSum header ok?
+    // TODO: user input array? or hardcode sum and array ok?
+
     //algorithm
     //1. user inputs an array
     //2. selection sort
-    //2. sorted with binary search
     //3. try out different sums
 
 
     //selection sort
-    void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    void swap(int[] num, int i, int j) {
+        int temp = num[i];
+        num[i] = num[j];
+        num[j] = temp;
     }
 
-    int findSmallest(int[] arr, int start) {
+    int findSmallest(int[] num, int start) {
         int smallestIndex = start;
-        for (int i=start + 1; i<arr.length; i++) {
-            if (arr[i] < arr[smallestIndex]) {
+        for (int i=start + 1; i<num.length; i++) {
+            if (num[i] < num[smallestIndex]) {
                 smallestIndex = i;
             }
         }
@@ -29,50 +29,12 @@ public class TwoSum {
         return smallestIndex;
     }
 
-    void sort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            swap(arr, i, findSmallest(arr, i));
+    void sort(int[] num) {
+        for (int i = 0; i < num.length; i++) {
+            swap(num, i, findSmallest(num, i));
         }
     }
 
-
-    //sorted with binary search
-    public int search(int[] arr, int target) {
-        return binsearch(arr, target, 0, arr.length-1);
-    }
-
-    public int binsearch (int[] arr, int target, int low, int high) {
-        if (low > high) {       //base case
-            return -1;
-        }
-
-        int mid = (low + high) / 2;
-
-        if (arr[mid] == target) {
-            return mid;
-        } else if (target > arr[mid]) {
-            return binsearch(arr, target, mid+1, high);
-        } else {
-            return binsearch(arr, target, low, mid-1);
-        }
-    }
-
-    public int remove(int[] arr, int target, int low, int high) {
-        if (low > high) {
-            return -1;
-        }
-
-        int mid = (low + high) / 2;
-
-        if((arr[mid] == target) && (arr[mid]-1 < target)) {
-            // 19<20, high = target-i
-        } else if ((arr[mid] == target) && (arr[mid]+1 < target)) {
-            // 19< 20, high = target+i
-        }
-
-        return 0;
-
-    }
 
     public int[] twoSum(int[] num, int sum) {
         int check = 0;
@@ -93,24 +55,35 @@ public class TwoSum {
             System.out.println("Possible Sum: -1 (Not found)");
         }
         return num;
+
     }
 
     public static void main(String[] args) {
 
         TwoSum sorter = new TwoSum();
         int[] num = {7, 5, 3, 3, 2, 1, 4, 6, 12, 17};
-        int sum = 50;
-
-        sorter.sort(num);
-
-        System.out.print("Array: [");
+        System.out.print("Unsorted Array: [");
         for (int i=0; i< num.length-1; i++) {
             System.out.print(num[i] + ", ");
         }
         System.out.println(num[num.length-1] + "]");
 
-        sorter.twoSum(num, sum);
 
+        int sum = 12;
+
+        sorter.sort(num);
+
+        System.out.print("Sorted Array: [");
+        for (int i=0; i< num.length-1; i++) {
+            System.out.print(num[i] + ", ");
+        }
+        System.out.println(num[num.length-1] + "]");
+
+
+        System.out.println("Sum: " + sum);
+
+
+        sorter.twoSum(num, sum);
 
     }
 }
