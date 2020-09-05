@@ -55,23 +55,54 @@ public class TwoSum {
         }
     }
 
+    public int remove(int[] arr, int target, int low, int high) {
+        if (low > high) {
+            return -1;
+        }
+
+        int mid = (low + high) / 2;
+
+        if((arr[mid] == target) && (arr[mid]-1 < target)) {
+            // 19<20, high = target-i
+        } else if ((arr[mid] == target) && (arr[mid]+1 < target)) {
+            // 19< 20, high = target+i
+        }
+
+        return 0;
+
+    }
+
     public static void main(String[] args) {
 
         TwoSum sorter = new TwoSum();
-        int[] arr = {7, 5, 3, 2, 1, 4, 6, 12, 17};
+        int[] arr = {7, 5, 3, 3, 2, 1, 4, 6, 12, 17};
+        int sum = 6;
+
         sorter.sort(arr);
+
+        System.out.print("Array: [");
         for (int i=0; i< arr.length-1; i++) {
             System.out.print(arr[i] + ", ");
         }
-        System.out.println(arr[arr.length-1]);
+        System.out.println(arr[arr.length-1] + "]");
 
-        System.out.println("Index of target: " + sorter.search(arr, 6));
 
-        for (int i=0; i< arr.length-1; i++) {
-            System.out.print(arr[i] + ", ");
+        int check = 0;
+        for (int i=0; i<arr.length-1; i++) {
+            for (int j=i+1; j<arr.length; j++) {
+                if (arr[i] != arr[j]) {
+                    if (arr[i] + arr[j] == sum) {
+                        System.out.print("Possible Sum: ");
+                        System.out.println("[" + i + ", " + j + "]");
+                        check = 1;
+                        break;
+                    }
+                }
+            }
         }
-        System.out.println(arr[arr.length-1]);
 
-
+        if(check == 0) {
+            System.out.println("-1");
+        }
     }
 }
