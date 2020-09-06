@@ -1,9 +1,10 @@
 package com.company;
 
-public class TwoSum {
+/**
+ * finds two indexes that add up to a target sum
+ */
 
-    // TODO: twoSum header ok?
-    // TODO: user input array? or hardcode sum and array ok?
+public class TwoSum {
 
     //algorithm
     //1. user inputs an array
@@ -11,13 +12,26 @@ public class TwoSum {
     //3. try out different sums
 
 
-    //selection sort
+    /**
+     * Selection Sort
+     * This is where swapping occurs and orders the elements from least to greatest
+     * @param num
+     * @param i
+     * @param j
+     */
     void swap(int[] num, int i, int j) {
         int temp = num[i];
         num[i] = num[j];
         num[j] = temp;
     }
 
+
+    /**
+     * Returns the smallest index which will get passed into swap function
+     * @param num
+     * @param start
+     * @return
+     */
     int findSmallest(int[] num, int start) {
         int smallestIndex = start;
         for (int i=start + 1; i<num.length; i++) {
@@ -29,6 +43,13 @@ public class TwoSum {
         return smallestIndex;
     }
 
+
+    /**
+     * Main calls this function to sort the unsorted int array
+     * this then calls the swap function to do so
+     *      this passes these parameters to do the comparisons
+     * @param num
+     */
     void sort(int[] num) {
         for (int i = 0; i < num.length; i++) {
             swap(num, i, findSmallest(num, i));
@@ -36,6 +57,14 @@ public class TwoSum {
     }
 
 
+    /**
+     * Finds the two sums that make up the target value
+     * Checks whether or not the two elements are not equal to each other first
+     * If it can't find a match, it returns -1
+     * @param num
+     * @param sum
+     * @return
+     */
     public int[] twoSum(int[] num, int sum) {
         int check = 0;
         for (int i=0; i<num.length-1; i++) {
@@ -58,6 +87,12 @@ public class TwoSum {
 
     }
 
+
+    /**
+     * Calls all of the above functions when sort is called
+     * prints out the unsorted and sorted int array, sum, and indexes
+     * @param args
+     */
     public static void main(String[] args) {
 
         TwoSum sorter = new TwoSum();
@@ -69,7 +104,7 @@ public class TwoSum {
         System.out.println(num[num.length-1] + "]");
 
 
-        int sum = 12;
+        int sum = 23;
 
         sorter.sort(num);
 
