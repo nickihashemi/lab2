@@ -96,7 +96,8 @@ public class TwoSum {
     public static void main(String[] args) {
 
         TwoSum sorter = new TwoSum();
-        int[] num = {7, 5, 3, 3, 2, 1, 4, 6, 12, 17};
+        //int[] num = {7, 5, 3, 3, 2, 1, 4, 6, 12, 17};
+        int[] num = {100, 20, 40, 50, 12, 4, 9};
         System.out.print("Unsorted Array: [");
         for (int i=0; i< num.length-1; i++) {
             System.out.print(num[i] + ", ");
@@ -104,7 +105,8 @@ public class TwoSum {
         System.out.println(num[num.length-1] + "]");
 
 
-        int sum = 23;
+        //int sum = 23;
+        int sum = 16;
 
         sorter.sort(num);
 
