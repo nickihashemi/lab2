@@ -11,7 +11,7 @@ public class TwoSum {
     //2. selection sort
     //3. try out different sums
 
-    int check = 0;      // used in twoSum function
+    int check = 0;          // used in twoSum function
 
     /**
      * Selection Sort
@@ -73,14 +73,14 @@ public class TwoSum {
                     if (num[i] + num[j] == sum) {
                         System.out.print("Possible Sum: ");
                         System.out.println("[" + i + ", " + j + "]");
-                        check = 1;
+                        check = 1;      //if sum is found
                         break;
                     }
                 }
             }
         }
 
-        if(check == 0) {
+        if(check == 0) {                //if no sums found
             // System.out.println("Possible Sum: -1 (Not found)");
             int[] wrong = new int[1];
             wrong[0] = -1;
