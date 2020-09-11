@@ -11,6 +11,7 @@ public class TwoSum {
     //2. selection sort
     //3. try out different sums
 
+    int check = 0;      // used in twoSum function
 
     /**
      * Selection Sort
@@ -66,7 +67,6 @@ public class TwoSum {
      * @return
      */
     public int[] twoSum(int[] num, int sum) {
-        int check = 0;
         for (int i=0; i<num.length-1; i++) {
             for (int j=i+1; j<num.length; j++) {
                 if (num[i] != num[j]) {
@@ -81,8 +81,12 @@ public class TwoSum {
         }
 
         if(check == 0) {
-            System.out.println("Possible Sum: -1 (Not found)");
+            // System.out.println("Possible Sum: -1 (Not found)");
+            int[] wrong = new int[1];
+            wrong[0] = -1;
+            return wrong;
         }
+
         return num;
 
     }
@@ -97,7 +101,7 @@ public class TwoSum {
 
         TwoSum sorter = new TwoSum();
         //int[] num = {7, 5, 3, 3, 2, 1, 4, 6, 12, 17};
-        int[] num = {100, 20, 40, 50, 12, 4, 9};
+        int[] num = {100, 20, 40, 50, 50, 12, 4, 9};
         System.out.print("Unsorted Array: [");
         for (int i=0; i< num.length-1; i++) {
             System.out.print(num[i] + ", ");
@@ -105,8 +109,8 @@ public class TwoSum {
         System.out.println(num[num.length-1] + "]");
 
 
-        //int sum = 23;
-        int sum = 16;
+        int sum = 16;             // returns indexes
+        // int sum = 100;              // returns -1
 
         sorter.sort(num);
 
@@ -119,8 +123,11 @@ public class TwoSum {
 
         System.out.println("Sum: " + sum);
 
-
-        sorter.twoSum(num, sum);
-
+        int[] arr = sorter.twoSum(num, sum);
+        if (sorter.check == 0) {
+            for (int k=0; k<arr.length; k++) {
+                System.out.println(arr[k]);
+            }
+        }
     }
 }
