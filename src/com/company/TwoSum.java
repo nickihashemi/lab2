@@ -2,6 +2,7 @@ package com.company;
 
 /**
  * finds two indexes that add up to a target sum
+ * returns -1 if no valid sum
  */
 
 public class TwoSum {
